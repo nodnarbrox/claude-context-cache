@@ -48,6 +48,9 @@ def extract_session_context(transcript_path):
     }
 
     if not transcript_path or not Path(transcript_path).exists():
+        # Convert sets to lists before returning
+        context["files_edited"] = list(context["files_edited"])
+        context["files_read"] = list(context["files_read"])
         return context
 
     try:
